@@ -8,14 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		922F9FB023AE8255005AAA59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FAF23AE8255005AAA59 /* AppDelegate.swift */; };
-		922F9FB223AE8255005AAA59 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FB123AE8255005AAA59 /* RootViewController.swift */; };
-		922F9FB423AE8255005AAA59 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FB323AE8255005AAA59 /* DataViewController.swift */; };
-		922F9FB623AE8255005AAA59 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FB523AE8255005AAA59 /* ModelController.swift */; };
 		922F9FB923AE8255005AAA59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 922F9FB723AE8255005AAA59 /* Main.storyboard */; };
 		922F9FBB23AE8256005AAA59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 922F9FBA23AE8256005AAA59 /* Assets.xcassets */; };
 		922F9FBE23AE8256005AAA59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 922F9FBC23AE8256005AAA59 /* LaunchScreen.storyboard */; };
 		922F9FC923AE8256005AAA59 /* U_Owe_MeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FC823AE8256005AAA59 /* U_Owe_MeTests.swift */; };
 		922F9FD423AE8256005AAA59 /* U_Owe_MeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FD323AE8256005AAA59 /* U_Owe_MeUITests.swift */; };
+		922F9FE423AE8A48005AAA59 /* DefaultPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FE323AE8A48005AAA59 /* DefaultPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,9 +36,6 @@
 /* Begin PBXFileReference section */
 		922F9FAC23AE8255005AAA59 /* U_Owe_Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = U_Owe_Me.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		922F9FAF23AE8255005AAA59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		922F9FB123AE8255005AAA59 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		922F9FB323AE8255005AAA59 /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
-		922F9FB523AE8255005AAA59 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		922F9FB823AE8255005AAA59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		922F9FBA23AE8256005AAA59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		922F9FBD23AE8256005AAA59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +46,7 @@
 		922F9FCF23AE8256005AAA59 /* U_Owe_MeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = U_Owe_MeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		922F9FD323AE8256005AAA59 /* U_Owe_MeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = U_Owe_MeUITests.swift; sourceTree = "<group>"; };
 		922F9FD523AE8256005AAA59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		922F9FE323AE8A48005AAA59 /* DefaultPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				922F9FAF23AE8255005AAA59 /* AppDelegate.swift */,
-				922F9FB123AE8255005AAA59 /* RootViewController.swift */,
-				922F9FB323AE8255005AAA59 /* DataViewController.swift */,
-				922F9FB523AE8255005AAA59 /* ModelController.swift */,
 				922F9FB723AE8255005AAA59 /* Main.storyboard */,
+				922F9FE323AE8A48005AAA59 /* DefaultPageViewController.swift */,
 				922F9FBA23AE8256005AAA59 /* Assets.xcassets */,
 				922F9FBC23AE8256005AAA59 /* LaunchScreen.storyboard */,
 				922F9FBF23AE8256005AAA59 /* Info.plist */,
@@ -262,10 +256,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				922F9FB223AE8255005AAA59 /* RootViewController.swift in Sources */,
-				922F9FB623AE8255005AAA59 /* ModelController.swift in Sources */,
-				922F9FB423AE8255005AAA59 /* DataViewController.swift in Sources */,
 				922F9FB023AE8255005AAA59 /* AppDelegate.swift in Sources */,
+				922F9FE423AE8A48005AAA59 /* DefaultPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +435,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TFB7N4469K;
 				INFOPLIST_FILE = U_Owe_Me/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -461,6 +454,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TFB7N4469K;
 				INFOPLIST_FILE = U_Owe_Me/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
