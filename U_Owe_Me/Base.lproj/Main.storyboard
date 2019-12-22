@@ -121,44 +121,6 @@
             <point key="canvasLocation" x="705" y="674"/>
         </scene>
         <!--Select a Contact-->
-        <scene sceneID="Lmv-yw-XCd">
-            <objects>
-                <tableViewController id="Yyb-Va-vC1" customClass="HomeContactTableController" customModule="U_Owe_Me" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="J11-oM-3dm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.99963909387588501" green="1" blue="0.99975615739822388" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeContact" id="7l2-AF-qru">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7l2-AF-qru" id="Yad-Lt-yZE">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Yyb-Va-vC1" id="cMX-r4-mQL"/>
-                            <outlet property="delegate" destination="Yyb-Va-vC1" id="iWH-IW-Qd4"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Select a Contact" id="T5s-oC-Bx5">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="pNT-Ro-DpO">
-                            <connections>
-                                <action selector="BackClicked:" destination="Yyb-Va-vC1" id="3PY-Ee-4Kl"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="ContactTableView" destination="J11-oM-3dm" id="7ik-6C-Vty"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rst-Jj-E8d" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="394" y="1796"/>
-        </scene>
-        <!--Select a Contact-->
         <scene sceneID="gIs-9S-cgn">
             <objects>
                 <viewController id="Ak2-bk-92y" customClass="HomeContactViewController" customModule="U_Owe_Me" customModuleProvider="target" sceneMemberID="viewController">
