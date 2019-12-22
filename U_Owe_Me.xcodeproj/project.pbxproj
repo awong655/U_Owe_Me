@@ -19,6 +19,7 @@
 		922F9FEF23AF03EE005AAA59 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FEE23AF03EE005AAA59 /* Errors.swift */; };
 		922F9FF323AF1D35005AAA59 /* HomeContactTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FF223AF1D35005AAA59 /* HomeContactTableController.swift */; };
 		922F9FF623AF2A54005AAA59 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FF523AF2A54005AAA59 /* ContactModel.swift */; };
+		922F9FF823AF78CC005AAA59 /* HomeContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FF723AF78CC005AAA59 /* HomeContactViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		922F9FEE23AF03EE005AAA59 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		922F9FF223AF1D35005AAA59 /* HomeContactTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContactTableController.swift; sourceTree = "<group>"; };
 		922F9FF523AF2A54005AAA59 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
+		922F9FF723AF78CC005AAA59 /* HomeContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContactViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				922F9FE623AED0CF005AAA59 /* CameraViewController.swift */,
 				922F9FE823AED1C1005AAA59 /* CameraServices.swift */,
 				922F9FF223AF1D35005AAA59 /* HomeContactTableController.swift */,
+				922F9FF723AF78CC005AAA59 /* HomeContactViewController.swift */,
 			);
 			path = HomePageController;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				922F9FB023AE8255005AAA59 /* AppDelegate.swift in Sources */,
 				922F9FF623AF2A54005AAA59 /* ContactModel.swift in Sources */,
 				922F9FE423AE8A48005AAA59 /* DefaultPageViewController.swift in Sources */,
+				922F9FF823AF78CC005AAA59 /* HomeContactViewController.swift in Sources */,
 				922F9FE723AED0CF005AAA59 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
