@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9209425E23B0028A002D2A20 /* U_Owe_Me.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9209425C23B0028A002D2A20 /* U_Owe_Me.xcdatamodeld */; };
+		9209426023B02D12002D2A20 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9209425F23B02D12002D2A20 /* ActivityViewController.swift */; };
+		9209426223B030B6002D2A20 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9209426123B030B6002D2A20 /* ActivityModel.swift */; };
 		922F9FB023AE8255005AAA59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FAF23AE8255005AAA59 /* AppDelegate.swift */; };
 		922F9FB923AE8255005AAA59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 922F9FB723AE8255005AAA59 /* Main.storyboard */; };
 		922F9FBB23AE8256005AAA59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 922F9FBA23AE8256005AAA59 /* Assets.xcassets */; };
@@ -41,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		9209425D23B0028A002D2A20 /* U_Owe_Me.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = U_Owe_Me.xcdatamodel; sourceTree = "<group>"; };
+		9209425F23B02D12002D2A20 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		9209426123B030B6002D2A20 /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
 		922F9FAC23AE8255005AAA59 /* U_Owe_Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = U_Owe_Me.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		922F9FAF23AE8255005AAA59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		922F9FB823AE8255005AAA59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 		922F9FEA23AED1C7005AAA59 /* ActivityPageController */ = {
 			isa = PBXGroup;
 			children = (
+				9209425F23B02D12002D2A20 /* ActivityViewController.swift */,
 			);
 			path = ActivityPageController;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				922F9FF523AF2A54005AAA59 /* ContactModel.swift */,
+				9209426123B030B6002D2A20 /* ActivityModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -306,10 +312,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9209426223B030B6002D2A20 /* ActivityModel.swift in Sources */,
 				922F9FE923AED1C1005AAA59 /* CameraServices.swift in Sources */,
 				922F9FEF23AF03EE005AAA59 /* Errors.swift in Sources */,
 				922F9FB023AE8255005AAA59 /* AppDelegate.swift in Sources */,
 				922F9FF623AF2A54005AAA59 /* ContactModel.swift in Sources */,
+				9209426023B02D12002D2A20 /* ActivityViewController.swift in Sources */,
 				9209425E23B0028A002D2A20 /* U_Owe_Me.xcdatamodeld in Sources */,
 				922F9FE423AE8A48005AAA59 /* DefaultPageViewController.swift in Sources */,
 				922F9FF823AF78CC005AAA59 /* HomeContactViewController.swift in Sources */,

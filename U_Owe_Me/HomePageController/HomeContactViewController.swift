@@ -8,6 +8,7 @@
 
 import UIKit
 import Contacts
+import CoreData
 
 class HomeContactViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
     
@@ -18,7 +19,30 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var imageDisplay: UIImageView!
     
     @IBAction func saveClicked(_ sender: Any) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let entity = NSEntityDescription.entity(forEntityName: "PendingTransaction", in: context)
+        
+        let newPendingTransaction = NSManagedObject(entity: entity!, insertInto: context)
+        
+        let contact : String?
+        if let index = selectedIndex, let img = self.currentImage{
+            contact = tableData[index.item]
+            let image_raw = img.jpegData(compressionQuality: 1.0)
+            newPendingTransaction.setValue(contact, forKey: "contact")
+            newPendingTransaction.setValue(image_raw, forKey: "receiptImage")
+            do {
+                try context.save()
+            } catch {
+                print("Failed saving")
+            }
+            dismiss(animated: true, completion: nil)
+        }
+        
+        
+        //newPendingTransaction.setValue()
     }
     
     @IBAction func shareClicked(_ sender: Any) {
@@ -30,6 +54,7 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
     var tableData : [String] = []
     var filteredTableData = [String]()
     var resultSearchController = UISearchController()
+    var selectedIndex : IndexPath?
     public var currentImage : UIImage?
     
     override func viewDidLoad() {
@@ -47,14 +72,9 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
             controller.searchBar.sizeToFit()
             
             tableView.tableHeaderView = controller.searchBar
-                                    
+            
             return controller
         })()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -127,6 +147,11 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 60
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath){
+        self.selectedIndex = indexPath
     }
     
 }
