@@ -26,11 +26,11 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     @IBOutlet weak var amountText: UITextField!
     
     @IBAction func OweMeClicked(_ sender: Any) {
-        
+        openContacts(Sender: sender as? UIButton)
     }
     
     @IBAction func IOweClicked(_ sender: Any) {
-        
+        openContacts(Sender: sender as? UIButton)
     }
     
     @IBAction func didCaptureViewClose(_ sender: Any) {
@@ -58,7 +58,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
     
     private func openContacts(Sender:UIButton!){
-        let newVC : HomeContactTableController = HomeContactTableController()
+        let newVC = storyboard?.instantiateViewController(withIdentifier: "ContactNav") as! UINavigationController
         self.present(newVC, animated: true, completion: nil)
     }
     
@@ -77,6 +77,9 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         view.bringSubviewToFront(oweMe)
         view.bringSubviewToFront(iOwe)
         view.bringSubviewToFront(amountText)
+//        self.view.sendSubviewToBack(captureImageView)
+//        self.view.sendSubviewToBack(previewView)
+        
     }
     
     private func cameraInit(){

@@ -9,13 +9,27 @@
 import UIKit
 import Contacts
 
-class HomeContactTableController: UITableViewController {
+class HomeContactTableController: UITableViewController, UISearchResultsUpdating {
     
-    var contactList : [ContactModel] = []
+    @IBAction func BackClicked(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    var tableData : [String] = []
+    var filteredTableData = [String]()
+    var resultSearchController = UISearchController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        resultSearchController = ({
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.dimsBackgroundDuringPresentation = false
+            controller.searchBar.sizeToFit()
+            
+            tableView.tableHeaderView = controller.searchBar
+            
+            return controller
+        })()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -33,7 +47,8 @@ class HomeContactTableController: UITableViewController {
                 let fetchReq = CNContactFetchRequest(keysToFetch: keysToFetch as [CNKeyDescriptor])
                 do{
                     try contactStore.enumerateContacts(with: fetchReq){contact,stop in
-                        self.contactList.append(ContactModel(firstName: contact.givenName, lastName: contact.familyName))
+                        let newContact = ContactModel(firstName: contact.givenName, lastName: contact.familyName)
+                        self.tableData.append(newContact.givenName + " " + newContact.familyName)
                     }
                     self.tableView.reloadData()
                 }catch let enumerateError{
@@ -52,18 +67,35 @@ class HomeContactTableController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.contactList.count
+        if (resultSearchController.isActive){
+            return filteredTableData.count
+        }else{
+            return self.tableData.count
+        }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeContact", for: indexPath)
-
-        // Configure the cell...
-        let firstName = contactList[indexPath.item].givenName
-        let lastName = contactList[indexPath.item].familyName
-        cell.textLabel?.text = firstName + " " + lastName
+        
+        if (resultSearchController.isActive) {
+            cell.textLabel?.text = filteredTableData[indexPath.item]
+        }
+        else{
+            cell.textLabel?.text = tableData[indexPath.item]
+            
+        }
         return cell
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filteredTableData.removeAll(keepingCapacity: false)
+        
+        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
+        let array = (tableData as NSArray).filtered(using: searchPredicate)
+        filteredTableData = array as! [String]
+        
+        self.tableView.reloadData()
     }
     
 
