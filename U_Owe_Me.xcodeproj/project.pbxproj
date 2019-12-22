@@ -16,6 +16,9 @@
 		922F9FE423AE8A48005AAA59 /* DefaultPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FE323AE8A48005AAA59 /* DefaultPageViewController.swift */; };
 		922F9FE723AED0CF005AAA59 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FE623AED0CF005AAA59 /* CameraViewController.swift */; };
 		922F9FE923AED1C1005AAA59 /* CameraServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FE823AED1C1005AAA59 /* CameraServices.swift */; };
+		922F9FEF23AF03EE005AAA59 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FEE23AF03EE005AAA59 /* Errors.swift */; };
+		922F9FF323AF1D35005AAA59 /* HomeContactTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FF223AF1D35005AAA59 /* HomeContactTableController.swift */; };
+		922F9FF623AF2A54005AAA59 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FF523AF2A54005AAA59 /* ContactModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		922F9FE323AE8A48005AAA59 /* DefaultPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPageViewController.swift; sourceTree = "<group>"; };
 		922F9FE623AED0CF005AAA59 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		922F9FE823AED1C1005AAA59 /* CameraServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraServices.swift; sourceTree = "<group>"; };
+		922F9FEE23AF03EE005AAA59 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		922F9FF223AF1D35005AAA59 /* HomeContactTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContactTableController.swift; sourceTree = "<group>"; };
+		922F9FF523AF2A54005AAA59 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,7 @@
 		922F9FAE23AE8255005AAA59 /* U_Owe_Me */ = {
 			isa = PBXGroup;
 			children = (
+				922F9FF423AF1EE2005AAA59 /* Models */,
 				922F9FEB23AED1DB005AAA59 /* ContactsPageController */,
 				922F9FEA23AED1C7005AAA59 /* ActivityPageController */,
 				922F9FE523AEBA53005AAA59 /* HomePageController */,
@@ -110,6 +117,7 @@
 				922F9FBA23AE8256005AAA59 /* Assets.xcassets */,
 				922F9FBC23AE8256005AAA59 /* LaunchScreen.storyboard */,
 				922F9FBF23AE8256005AAA59 /* Info.plist */,
+				922F9FEE23AF03EE005AAA59 /* Errors.swift */,
 			);
 			path = U_Owe_Me;
 			sourceTree = "<group>";
@@ -137,6 +145,7 @@
 			children = (
 				922F9FE623AED0CF005AAA59 /* CameraViewController.swift */,
 				922F9FE823AED1C1005AAA59 /* CameraServices.swift */,
+				922F9FF223AF1D35005AAA59 /* HomeContactTableController.swift */,
 			);
 			path = HomePageController;
 			sourceTree = "<group>";
@@ -153,6 +162,14 @@
 			children = (
 			);
 			path = ContactsPageController;
+			sourceTree = "<group>";
+		};
+		922F9FF423AF1EE2005AAA59 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				922F9FF523AF2A54005AAA59 /* ContactModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,7 +304,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				922F9FE923AED1C1005AAA59 /* CameraServices.swift in Sources */,
+				922F9FF323AF1D35005AAA59 /* HomeContactTableController.swift in Sources */,
+				922F9FEF23AF03EE005AAA59 /* Errors.swift in Sources */,
 				922F9FB023AE8255005AAA59 /* AppDelegate.swift in Sources */,
+				922F9FF623AF2A54005AAA59 /* ContactModel.swift in Sources */,
 				922F9FE423AE8A48005AAA59 /* DefaultPageViewController.swift in Sources */,
 				922F9FE723AED0CF005AAA59 /* CameraViewController.swift in Sources */,
 			);

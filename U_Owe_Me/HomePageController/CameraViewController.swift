@@ -17,7 +17,38 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     
     @IBOutlet weak var takePhotoButton: UIButton!
     
+    @IBOutlet weak var captureViewClose: UIButton!
+    
+    @IBOutlet weak var oweMe: UIButton!
+    
+    @IBOutlet weak var iOwe: UIButton!
+    
+    @IBOutlet weak var amountText: UITextField!
+    
+    @IBAction func OweMeClicked(_ sender: Any) {
+        
+    }
+    
+    @IBAction func IOweClicked(_ sender: Any) {
+        
+    }
+    
+    @IBAction func didCaptureViewClose(_ sender: Any) {
+        self.captureImageView.image = nil
+        self.captureViewClose.isHidden = true
+        self.oweMe.isHidden = true
+        self.iOwe.isHidden = true
+        self.amountText.isHidden = true
+        self.takePhotoButton.isHidden = false
+    }
+    
+    
     @IBAction func didTakePhoto(_ sender: Any) {
+        self.takePhotoButton.isHidden = true
+        self.captureViewClose.isHidden = false
+        self.oweMe.isHidden = false
+        self.iOwe.isHidden = false
+        self.amountText.isHidden = false
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
         stillImageOutput.capturePhoto(with: settings, delegate: self)
     }
@@ -25,6 +56,11 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     var captureSession: AVCaptureSession!
     var stillImageOutput: AVCapturePhotoOutput!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
+    
+    private func openContacts(Sender:UIButton!){
+        let newVC : HomeContactTableController = HomeContactTableController()
+        self.present(newVC, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +73,10 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         cameraInit()
         view.bringSubviewToFront(captureImageView)
         view.bringSubviewToFront(takePhotoButton)
+        view.bringSubviewToFront(captureViewClose)
+        view.bringSubviewToFront(oweMe)
+        view.bringSubviewToFront(iOwe)
+        view.bringSubviewToFront(amountText)
     }
     
     private func cameraInit(){
@@ -89,85 +129,11 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         guard let imageData = photo.fileDataRepresentation() else{ return }
         let image = UIImage(data: imageData)
         captureImageView.image = image
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.captureSession.stopRunning()
     }
-    
-//    private func cameraInit(){
-//        let vc = UIImagePickerController()
-//
-//        // check if source type is available
-//        if UIImagePickerController.isSourceTypeAvailable(.camera){
-//            vc.sourceType = .camera
-//            vc.allowsEditing = true
-//            vc.delegate = self
-//            self.present(vc, animated: false, completion: nil)
-//        }else{
-//            print("Camera Not Available")
-//        }
-//
-//        // for the image picker
-//        let availableTypes = UIImagePickerController.availableMediaTypes(for: .camera)
-//
-//    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
-
-//// Conform to protocols required for opening the camera as well as the camera roll
-//extension CameraViewController: UINavigationControllerDelegate{
-////    // TODO: implement
-////    func navigationController(_ navigationController: UINavigationController,
-////                              willShow viewController: UIViewController,
-////                              animated: Bool){
-////
-////    }
-////
-////    // TODO: implement
-////    func navigationController(_ navigationController: UINavigationController,
-////                              didShow viewController: UIViewController,
-////                              animated: Bool){
-////
-////    }
-////
-////    // TODO: implement
-////    func navigationController(_ navigationController: UINavigationController,
-////                              animationControllerFor operation: UINavigationController.Operation,
-////                              from fromVC: UIViewController,
-////                              to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning?{
-////        return nil
-////    }
-////
-////    // TODO: implement
-////    func navigationController(_ navigationController: UINavigationController,
-////                              interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?{
-////        return nil
-////    }
-////
-////    // TODO: implement
-////    func navigationControllerPreferredInterfaceOrientationForPresentation(_ navigationController: UINavigationController) -> UIInterfaceOrientation{
-////        return navigationController
-////    }
-////
-////    func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask{
-////        return navigationController
-////    }
-//}
-//
-//extension CameraViewController: UIImagePickerControllerDelegate{
-//
-//}
