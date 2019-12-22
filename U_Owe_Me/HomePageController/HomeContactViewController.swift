@@ -10,19 +10,36 @@ import UIKit
 import Contacts
 
 class HomeContactViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
-
+    
     @IBAction func CloseContacts(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-
+    
+    @IBOutlet weak var imageDisplay: UIImageView!
+    
+    @IBAction func saveClicked(_ sender: Any) {
+        
+    }
+    
+    @IBAction func shareClicked(_ sender: Any) {
+        
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     
     var tableData : [String] = []
     var filteredTableData = [String]()
     var resultSearchController = UISearchController()
+    public var currentImage : UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let img = currentImage{
+            print(img)
+            imageDisplay.image = img
+        }
+        
         resultSearchController = ({
             let controller = UISearchController(searchResultsController: nil)
             controller.searchResultsUpdater = self
@@ -30,7 +47,7 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
             controller.searchBar.sizeToFit()
             
             tableView.tableHeaderView = controller.searchBar
-            
+                                    
             return controller
         })()
         // Uncomment the following line to preserve selection between presentations
@@ -42,7 +59,6 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         let contactStore = CNContactStore()
         if CNContactStore.authorizationStatus(for: .contacts) == .authorized{
             DispatchQueue.main.async{

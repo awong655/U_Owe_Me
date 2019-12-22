@@ -59,6 +59,9 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     
     private func openContacts(Sender:UIButton!){
         let newVC = storyboard?.instantiateViewController(withIdentifier: "ContactNav") as! UINavigationController
+        if let tableVC = newVC.viewControllers.first as? HomeContactViewController{
+            tableVC.currentImage = captureImageView.image
+        }
         self.present(newVC, animated: true, completion: nil)
     }
     
