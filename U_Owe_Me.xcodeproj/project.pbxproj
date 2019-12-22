@@ -14,6 +14,8 @@
 		922F9FC923AE8256005AAA59 /* U_Owe_MeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FC823AE8256005AAA59 /* U_Owe_MeTests.swift */; };
 		922F9FD423AE8256005AAA59 /* U_Owe_MeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FD323AE8256005AAA59 /* U_Owe_MeUITests.swift */; };
 		922F9FE423AE8A48005AAA59 /* DefaultPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FE323AE8A48005AAA59 /* DefaultPageViewController.swift */; };
+		922F9FE723AED0CF005AAA59 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FE623AED0CF005AAA59 /* CameraViewController.swift */; };
+		922F9FE923AED1C1005AAA59 /* CameraServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FE823AED1C1005AAA59 /* CameraServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		922F9FD323AE8256005AAA59 /* U_Owe_MeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = U_Owe_MeUITests.swift; sourceTree = "<group>"; };
 		922F9FD523AE8256005AAA59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		922F9FE323AE8A48005AAA59 /* DefaultPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPageViewController.swift; sourceTree = "<group>"; };
+		922F9FE623AED0CF005AAA59 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		922F9FE823AED1C1005AAA59 /* CameraServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,9 @@
 		922F9FAE23AE8255005AAA59 /* U_Owe_Me */ = {
 			isa = PBXGroup;
 			children = (
+				922F9FEB23AED1DB005AAA59 /* ContactsPageController */,
+				922F9FEA23AED1C7005AAA59 /* ActivityPageController */,
+				922F9FE523AEBA53005AAA59 /* HomePageController */,
 				922F9FAF23AE8255005AAA59 /* AppDelegate.swift */,
 				922F9FB723AE8255005AAA59 /* Main.storyboard */,
 				922F9FE323AE8A48005AAA59 /* DefaultPageViewController.swift */,
@@ -123,6 +130,29 @@
 				922F9FD523AE8256005AAA59 /* Info.plist */,
 			);
 			path = U_Owe_MeUITests;
+			sourceTree = "<group>";
+		};
+		922F9FE523AEBA53005AAA59 /* HomePageController */ = {
+			isa = PBXGroup;
+			children = (
+				922F9FE623AED0CF005AAA59 /* CameraViewController.swift */,
+				922F9FE823AED1C1005AAA59 /* CameraServices.swift */,
+			);
+			path = HomePageController;
+			sourceTree = "<group>";
+		};
+		922F9FEA23AED1C7005AAA59 /* ActivityPageController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ActivityPageController;
+			sourceTree = "<group>";
+		};
+		922F9FEB23AED1DB005AAA59 /* ContactsPageController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ContactsPageController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +286,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				922F9FE923AED1C1005AAA59 /* CameraServices.swift in Sources */,
 				922F9FB023AE8255005AAA59 /* AppDelegate.swift in Sources */,
 				922F9FE423AE8A48005AAA59 /* DefaultPageViewController.swift in Sources */,
+				922F9FE723AED0CF005AAA59 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,20 +21,29 @@ class DefaultPageViewController: UIPageViewController {
             instantiateViewController(withIdentifier: "\(color)ViewController")
     }
     
+    override open var shouldAutorotate: Bool {
+        return false
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // dataSource is a reference to a protocol. We satisfy the protocol in the below extension of UIPageViewControllerDataSource
         // Satisfying this protocol allows us to assign this object to dataSource : (protocol) UIPageViewControllerDataSource
         dataSource = self
-        
+        // Do any additional setup after loading the view.
+    }
+    
+    // we use viewDidAppear as opposed to viewDidLoad becasue viewDidLoad is called before the view controller is presented. Cannot present another view while itself is not presented. 
+    override func viewDidAppear(_ animated: Bool){
+        super.viewDidAppear(animated)
         if let firstViewController : UIViewController = orderedViewControllers[safe:1]{
             setViewControllers([firstViewController],
                                direction: .forward,
                                animated: true,
                                completion: nil)
         }
-        // Do any additional setup after loading the view.
     }
     
     

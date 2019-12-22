@@ -16,6 +16,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="8Gv-6G-cAe" customClass="DefaultPageViewController" customModule="U_Owe_Me" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Jy-cu-dCv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-92" y="-7"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Re8-ok-6qh">
@@ -32,20 +33,38 @@
             </objects>
             <point key="canvasLocation" x="-617" y="677"/>
         </scene>
-        <!--View Controller-->
+        <!--Camera View Controller-->
         <scene sceneID="M2A-1B-ZrS">
             <objects>
-                <viewController storyboardIdentifier="BlueViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="R33-xV-tHA" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BlueViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="R33-xV-tHA" customClass="CameraViewController" customModule="U_Owe_Me" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BWb-qd-bNb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.3223000725427636" green="0.43914804101976823" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hoT-Yb-pUo">
+                                <rect key="frame" x="119" y="519" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="of0-MO-6w0">
+                                <rect key="frame" x="32" y="579" width="54" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="didTakePhoto:" destination="R33-xV-tHA" eventType="touchUpInside" id="5yx-Lv-CMB"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="k0y-6v-ciI"/>
                     </view>
+                    <connections>
+                        <outlet property="captureImageView" destination="hoT-Yb-pUo" id="Ajh-2c-9mV"/>
+                        <outlet property="previewView" destination="BWb-qd-bNb" id="I9Y-Ud-62J"/>
+                        <outlet property="takePhotoButton" destination="of0-MO-6w0" id="0cm-Uy-a8a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFx-Pw-ajk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="49" y="677"/>
+            <point key="canvasLocation" x="48.799999999999997" y="676.91154422788611"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="cPY-8a-OQs">
