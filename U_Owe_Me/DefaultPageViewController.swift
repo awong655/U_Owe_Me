@@ -38,6 +38,8 @@ class DefaultPageViewController: UIPageViewController {
     // we use viewDidAppear as opposed to viewDidLoad becasue viewDidLoad is called before the view controller is presented. Cannot present another view while itself is not presented. 
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(animated)
+        
+        // uses the array extension for safe access of the orderedViewControllers array
         if let firstViewController : UIViewController = orderedViewControllers[safe:1]{
             setViewControllers([firstViewController],
                                direction: .forward,
