@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9209425E23B0028A002D2A20 /* U_Owe_Me.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9209425C23B0028A002D2A20 /* U_Owe_Me.xcdatamodeld */; };
+		9209426023B02D12002D2A20 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9209425F23B02D12002D2A20 /* ActivityViewController.swift */; };
+		9209426223B030B6002D2A20 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9209426123B030B6002D2A20 /* ActivityModel.swift */; };
 		922F9FB023AE8255005AAA59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FAF23AE8255005AAA59 /* AppDelegate.swift */; };
 		922F9FB923AE8255005AAA59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 922F9FB723AE8255005AAA59 /* Main.storyboard */; };
 		922F9FBB23AE8256005AAA59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 922F9FBA23AE8256005AAA59 /* Assets.xcassets */; };
@@ -16,6 +19,9 @@
 		922F9FE423AE8A48005AAA59 /* DefaultPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FE323AE8A48005AAA59 /* DefaultPageViewController.swift */; };
 		922F9FE723AED0CF005AAA59 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FE623AED0CF005AAA59 /* CameraViewController.swift */; };
 		922F9FE923AED1C1005AAA59 /* CameraServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FE823AED1C1005AAA59 /* CameraServices.swift */; };
+		922F9FEF23AF03EE005AAA59 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FEE23AF03EE005AAA59 /* Errors.swift */; };
+		922F9FF623AF2A54005AAA59 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FF523AF2A54005AAA59 /* ContactModel.swift */; };
+		922F9FF823AF78CC005AAA59 /* HomeContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FF723AF78CC005AAA59 /* HomeContactViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9209425D23B0028A002D2A20 /* U_Owe_Me.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = U_Owe_Me.xcdatamodel; sourceTree = "<group>"; };
+		9209425F23B02D12002D2A20 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		9209426123B030B6002D2A20 /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
 		922F9FAC23AE8255005AAA59 /* U_Owe_Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = U_Owe_Me.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		922F9FAF23AE8255005AAA59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		922F9FB823AE8255005AAA59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -51,6 +60,9 @@
 		922F9FE323AE8A48005AAA59 /* DefaultPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPageViewController.swift; sourceTree = "<group>"; };
 		922F9FE623AED0CF005AAA59 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		922F9FE823AED1C1005AAA59 /* CameraServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraServices.swift; sourceTree = "<group>"; };
+		922F9FEE23AF03EE005AAA59 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		922F9FF523AF2A54005AAA59 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
+		922F9FF723AF78CC005AAA59 /* HomeContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContactViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,15 +113,18 @@
 		922F9FAE23AE8255005AAA59 /* U_Owe_Me */ = {
 			isa = PBXGroup;
 			children = (
+				922F9FF423AF1EE2005AAA59 /* Models */,
 				922F9FEB23AED1DB005AAA59 /* ContactsPageController */,
 				922F9FEA23AED1C7005AAA59 /* ActivityPageController */,
 				922F9FE523AEBA53005AAA59 /* HomePageController */,
-				922F9FAF23AE8255005AAA59 /* AppDelegate.swift */,
-				922F9FB723AE8255005AAA59 /* Main.storyboard */,
-				922F9FE323AE8A48005AAA59 /* DefaultPageViewController.swift */,
 				922F9FBA23AE8256005AAA59 /* Assets.xcassets */,
+				9209425C23B0028A002D2A20 /* U_Owe_Me.xcdatamodeld */,
+				922F9FAF23AE8255005AAA59 /* AppDelegate.swift */,
+				922F9FE323AE8A48005AAA59 /* DefaultPageViewController.swift */,
+				922F9FB723AE8255005AAA59 /* Main.storyboard */,
 				922F9FBC23AE8256005AAA59 /* LaunchScreen.storyboard */,
 				922F9FBF23AE8256005AAA59 /* Info.plist */,
+				922F9FEE23AF03EE005AAA59 /* Errors.swift */,
 			);
 			path = U_Owe_Me;
 			sourceTree = "<group>";
@@ -137,6 +152,7 @@
 			children = (
 				922F9FE623AED0CF005AAA59 /* CameraViewController.swift */,
 				922F9FE823AED1C1005AAA59 /* CameraServices.swift */,
+				922F9FF723AF78CC005AAA59 /* HomeContactViewController.swift */,
 			);
 			path = HomePageController;
 			sourceTree = "<group>";
@@ -144,6 +160,7 @@
 		922F9FEA23AED1C7005AAA59 /* ActivityPageController */ = {
 			isa = PBXGroup;
 			children = (
+				9209425F23B02D12002D2A20 /* ActivityViewController.swift */,
 			);
 			path = ActivityPageController;
 			sourceTree = "<group>";
@@ -153,6 +170,15 @@
 			children = (
 			);
 			path = ContactsPageController;
+			sourceTree = "<group>";
+		};
+		922F9FF423AF1EE2005AAA59 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				922F9FF523AF2A54005AAA59 /* ContactModel.swift */,
+				9209426123B030B6002D2A20 /* ActivityModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,9 +312,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9209426223B030B6002D2A20 /* ActivityModel.swift in Sources */,
 				922F9FE923AED1C1005AAA59 /* CameraServices.swift in Sources */,
+				922F9FEF23AF03EE005AAA59 /* Errors.swift in Sources */,
 				922F9FB023AE8255005AAA59 /* AppDelegate.swift in Sources */,
+				922F9FF623AF2A54005AAA59 /* ContactModel.swift in Sources */,
+				9209426023B02D12002D2A20 /* ActivityViewController.swift in Sources */,
+				9209425E23B0028A002D2A20 /* U_Owe_Me.xcdatamodeld in Sources */,
 				922F9FE423AE8A48005AAA59 /* DefaultPageViewController.swift in Sources */,
+				922F9FF823AF78CC005AAA59 /* HomeContactViewController.swift in Sources */,
 				922F9FE723AED0CF005AAA59 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -620,6 +652,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9209425C23B0028A002D2A20 /* U_Owe_Me.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9209425D23B0028A002D2A20 /* U_Owe_Me.xcdatamodel */,
+			);
+			currentVersion = 9209425D23B0028A002D2A20 /* U_Owe_Me.xcdatamodel */;
+			path = U_Owe_Me.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 922F9FA423AE8255005AAA59 /* Project object */;
 }

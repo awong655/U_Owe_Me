@@ -11,20 +11,61 @@ import AVFoundation
 
 class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
 
-    @IBOutlet weak var previewView: UIView!
+    @IBOutlet var previewView: UIView!
     
-    @IBOutlet weak var captureImageView: UIImageView!
+    @IBOutlet var captureImageView: UIImageView!
     
     @IBOutlet weak var takePhotoButton: UIButton!
     
+    @IBOutlet weak var captureViewClose: UIButton!
+    
+    @IBOutlet weak var oweMe: UIButton!
+    
+    @IBOutlet weak var iOwe: UIButton!
+    
+    @IBOutlet weak var amountText: UITextField!
+    
+    @IBAction func OweMeClicked(_ sender: Any) {
+        openContacts(Sender: sender as? UIButton)
+    }
+    
+    @IBAction func IOweClicked(_ sender: Any) {
+        openContacts(Sender: sender as? UIButton)
+    }
+    
+    // is there a more efficient way of handling the UI?
+    @IBAction func didCaptureViewClose(_ sender: Any) {
+        self.captureImageView.image = nil
+        self.captureViewClose.isHidden = true
+        self.oweMe.isHidden = true
+        self.iOwe.isHidden = true
+        self.amountText.isHidden = true
+        self.takePhotoButton.isHidden = false
+    }
+    
+    
     @IBAction func didTakePhoto(_ sender: Any) {
+        self.takePhotoButton.isHidden = true
+        self.captureViewClose.isHidden = false
+        self.oweMe.isHidden = false
+        self.iOwe.isHidden = false
+        self.amountText.isHidden = false
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
         stillImageOutput.capturePhoto(with: settings, delegate: self)
     }
     
+    // Instance properties
     var captureSession: AVCaptureSession!
     var stillImageOutput: AVCapturePhotoOutput!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
+    
+    private func openContacts(Sender:UIButton!){
+        let newVC = storyboard?.instantiateViewController(withIdentifier: "ContactNav") as! UINavigationController
+        if let tableVC = newVC.viewControllers.first as? HomeContactViewController{
+            tableVC.currentImage = captureImageView.image
+        }
+        self.present(newVC, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +73,29 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        
+        cameraInit()
+        
+        // set frame here to avoid expanding camera view animation
+        videoPreviewLayer?.frame = self.view.frame
+    }
+    
     override func viewDidAppear(_ animated : Bool){
         super.viewDidAppear(animated)
-        cameraInit()
+        
+        // is there a more efficient way to do this
+        // I think CALayers may be the answer to this
         view.bringSubviewToFront(captureImageView)
         view.bringSubviewToFront(takePhotoButton)
+        view.bringSubviewToFront(captureViewClose)
+        view.bringSubviewToFront(oweMe)
+        view.bringSubviewToFront(iOwe)
+        view.bringSubviewToFront(amountText)
+//        self.view.sendSubviewToBack(captureImageView)
+//        self.view.sendSubviewToBack(previewView)
+        
     }
     
     private func cameraInit(){
@@ -44,6 +103,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         // start camera session, camera quality
         captureSession = AVCaptureSession()
         captureSession.sessionPreset = .high
+        
         
         // Input device selection (default is back camera for AVMediaType.video)
         guard let backCamera = AVCaptureDevice.default(for: AVMediaType.video)
@@ -89,85 +149,11 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         guard let imageData = photo.fileDataRepresentation() else{ return }
         let image = UIImage(data: imageData)
         captureImageView.image = image
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.captureSession.stopRunning()
     }
-    
-//    private func cameraInit(){
-//        let vc = UIImagePickerController()
-//
-//        // check if source type is available
-//        if UIImagePickerController.isSourceTypeAvailable(.camera){
-//            vc.sourceType = .camera
-//            vc.allowsEditing = true
-//            vc.delegate = self
-//            self.present(vc, animated: false, completion: nil)
-//        }else{
-//            print("Camera Not Available")
-//        }
-//
-//        // for the image picker
-//        let availableTypes = UIImagePickerController.availableMediaTypes(for: .camera)
-//
-//    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
-
-//// Conform to protocols required for opening the camera as well as the camera roll
-//extension CameraViewController: UINavigationControllerDelegate{
-////    // TODO: implement
-////    func navigationController(_ navigationController: UINavigationController,
-////                              willShow viewController: UIViewController,
-////                              animated: Bool){
-////
-////    }
-////
-////    // TODO: implement
-////    func navigationController(_ navigationController: UINavigationController,
-////                              didShow viewController: UIViewController,
-////                              animated: Bool){
-////
-////    }
-////
-////    // TODO: implement
-////    func navigationController(_ navigationController: UINavigationController,
-////                              animationControllerFor operation: UINavigationController.Operation,
-////                              from fromVC: UIViewController,
-////                              to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning?{
-////        return nil
-////    }
-////
-////    // TODO: implement
-////    func navigationController(_ navigationController: UINavigationController,
-////                              interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?{
-////        return nil
-////    }
-////
-////    // TODO: implement
-////    func navigationControllerPreferredInterfaceOrientationForPresentation(_ navigationController: UINavigationController) -> UIInterfaceOrientation{
-////        return navigationController
-////    }
-////
-////    func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask{
-////        return navigationController
-////    }
-//}
-//
-//extension CameraViewController: UIImagePickerControllerDelegate{
-//
-//}
