@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+// (Apple Doc)- UIPageViewController = A container view controller that manages navigation between pages of content, where each page is managed by a child view controller.
+//  UIPageViewController is a protocol name. Protocols define that this class must adhere to the provided blueprints	
 class DefaultPageViewController: UIPageViewController {
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
@@ -63,6 +64,11 @@ class DefaultPageViewController: UIPageViewController {
 }
 
 // MARK: UIPageViewControllerDataSource
+// extension to implement ViewControllerDataSource delegate
+// extends this class (DefaultPageViewController)
+// I do not think this needs to be in an extension, I think extension may be a good way to organize delegate code
+
+// (Apple Doc) UIPageViewControllerDataSource protocol is adopted by an object that provides view controllers to the page view controller on an as-needed basis, in response to navigation gestures.
 
 extension DefaultPageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController,

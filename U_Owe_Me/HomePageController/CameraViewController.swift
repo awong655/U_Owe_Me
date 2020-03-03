@@ -11,9 +11,9 @@ import AVFoundation
 
 class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
 
-    @IBOutlet weak var previewView: UIView!
+    @IBOutlet var previewView: UIView!
     
-    @IBOutlet weak var captureImageView: UIImageView!
+    @IBOutlet var captureImageView: UIImageView!
     
     @IBOutlet weak var takePhotoButton: UIButton!
     
@@ -33,6 +33,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         openContacts(Sender: sender as? UIButton)
     }
     
+    // is there a more efficient way of handling the UI?
     @IBAction func didCaptureViewClose(_ sender: Any) {
         self.captureImageView.image = nil
         self.captureViewClose.isHidden = true
@@ -53,6 +54,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         stillImageOutput.capturePhoto(with: settings, delegate: self)
     }
     
+    // Instance properties
     var captureSession: AVCaptureSession!
     var stillImageOutput: AVCapturePhotoOutput!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
@@ -71,9 +73,20 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        
+        cameraInit()
+        
+        // set frame here to avoid expanding camera view animation
+        videoPreviewLayer?.frame = self.view.frame
+    }
+    
     override func viewDidAppear(_ animated : Bool){
         super.viewDidAppear(animated)
-        cameraInit()
+        
+        // is there a more efficient way to do this
+        // I think CALayers may be the answer to this
         view.bringSubviewToFront(captureImageView)
         view.bringSubviewToFront(takePhotoButton)
         view.bringSubviewToFront(captureViewClose)
@@ -90,6 +103,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         // start camera session, camera quality
         captureSession = AVCaptureSession()
         captureSession.sessionPreset = .high
+        
         
         // Input device selection (default is back camera for AVMediaType.video)
         guard let backCamera = AVCaptureDevice.default(for: AVMediaType.video)

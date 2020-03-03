@@ -82,17 +82,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="of0-MO-6w0">
-                                <rect key="frame" x="30" y="587" width="65" height="34"/>
+                                <rect key="frame" x="138" y="521" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Capture"/>
+                                <state key="normal" image="Capture_Button"/>
                                 <connections>
                                     <action selector="didTakePhoto:" destination="R33-xV-tHA" eventType="touchUpInside" id="5yx-Lv-CMB"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mFZ-sY-36z">
-                                <rect key="frame" x="313" y="20" width="46" height="30"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mFZ-sY-36z">
+                                <rect key="frame" x="317" y="20" width="42" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Close">
+                                <state key="normal" image="Close_Button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -259,4 +259,8 @@
             <point key="canvasLocation" x="-644" y="1354"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Capture_Button" width="1575" height="1575"/>
+        <image name="Close_Button" width="100" height="100"/>
+    </resources>
 </document>
