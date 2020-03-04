@@ -10,7 +10,8 @@ import UIKit
 import AVFoundation
 
 class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
-
+    
+    // MARK: OUTLETS
     @IBOutlet var previewView: UIView!
     
     @IBOutlet var captureImageView: UIImageView!
@@ -26,11 +27,15 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     @IBOutlet weak var amountText: UITextField!
     
     @IBAction func OweMeClicked(_ sender: Any) {
-        openContacts(Sender: sender as? UIButton)
+        //openContacts(Sender: sender as? UIButton)
+        self.view.bringSubviewToFront(self.contactCard.view)
+        self.handleTapGesture()
     }
     
     @IBAction func IOweClicked(_ sender: Any) {
-        openContacts(Sender: sender as? UIButton)
+        //openContacts(Sender: sender as? UIButton)
+        self.view.bringSubviewToFront(self.contactCard.view)
+        self.handleTapGesture()
     }
     
     // is there a more efficient way of handling the UI?
@@ -54,11 +59,18 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         stillImageOutput.capturePhoto(with: settings, delegate: self)
     }
     
-    // Instance properties
+    // MARK: INSTANCE PROPERTIES
     var captureSession: AVCaptureSession!
     var stillImageOutput: AVCapturePhotoOutput!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
     
+    // Sliding Card Implementation
+    private var contactCard: HomeContactViewController!;
+    //private var contactCard: UIViewController!
+    private var cardHiddenConstraint: NSLayoutConstraint!
+    private var cardVisibleConstraint: NSLayoutConstraint!
+    
+    // MARK: FUNCTIONS
     private func openContacts(Sender:UIButton!){
         let newVC = storyboard?.instantiateViewController(withIdentifier: "ContactNav") as! UINavigationController
         if let tableVC = newVC.viewControllers.first as? HomeContactViewController{
@@ -69,8 +81,52 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.initSlidingContacts();
         print("loaded camera view controller")
         // Do any additional setup after loading the view.
+    }
+    
+    private func initSlidingContacts(){
+        guard let contactListStoryboard = self.storyboard else{
+            return;
+        }
+        contactCard = contactListStoryboard.instantiateViewController(withIdentifier: "HomeContactViewController") as? HomeContactViewController
+        //contactCard = contactListStoryboard.instantiateViewController(withIdentifier: "RedViewController")
+        addChild(contactCard);
+        let contactCardView = contactCard.view!
+        contactCardView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(contactCardView)
+        
+        // topAnchor = a view's top edge. .constraint will add a constraint
+        cardHiddenConstraint = contactCardView.topAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50)
+        cardVisibleConstraint = contactCardView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50)
+
+        let cardViewControllerViewConstraints = [
+            contactCardView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            contactCardView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            cardHiddenConstraint!,
+            contactCardView.heightAnchor.constraint(equalTo: view.heightAnchor)
+        ]
+        NSLayoutConstraint.activate(cardViewControllerViewConstraints)
+        
+        contactCard.didMove(toParent: self)
+        
+        //let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
+        //contactCard.view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc private func handleTapGesture() {
+        let frameAnimator = UIViewPropertyAnimator(duration: 0.3, dampingRatio: 1) {
+            if self.cardHiddenConstraint.isActive {
+                self.cardHiddenConstraint.isActive = false
+                self.cardVisibleConstraint.isActive = true
+            } else {
+                self.cardVisibleConstraint.isActive = false
+                self.cardHiddenConstraint.isActive = true
+            }
+            self.view.layoutIfNeeded()
+        }
+        frameAnimator.startAnimation()
     }
     
     override func viewWillAppear(_ animated: Bool){
@@ -80,6 +136,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         
         // set frame here to avoid expanding camera view animation
         videoPreviewLayer?.frame = self.view.frame
+        self.initSlidingContacts();
     }
     
     override func viewDidAppear(_ animated : Bool){

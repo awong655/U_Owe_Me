@@ -163,7 +163,7 @@
         <!--Select a Contact-->
         <scene sceneID="gIs-9S-cgn">
             <objects>
-                <viewController id="Ak2-bk-92y" customClass="HomeContactViewController" customModule="U_Owe_Me" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeContactViewController" id="Ak2-bk-92y" customClass="HomeContactViewController" customModule="U_Owe_Me" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="E9U-Ef-xQF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -240,7 +240,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iAT-aE-XbK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="376.80000000000001" y="1354.2728635682161"/>
+            <point key="canvasLocation" x="79" y="1339"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AvH-Si-wwg">
@@ -256,7 +256,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXj-Ip-9qS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-644" y="1354"/>
+            <point key="canvasLocation" x="-2006" y="1354"/>
         </scene>
     </scenes>
     <resources>
