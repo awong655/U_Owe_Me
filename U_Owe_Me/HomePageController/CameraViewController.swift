@@ -12,7 +12,9 @@ import AVFoundation
 class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     
     // MARK: OUTLETS
-    @IBOutlet var previewView: UIView!
+    @IBOutlet weak var previewView: UIView!
+    
+    @IBOutlet weak var dimmerLayer: UIView!
     
     @IBOutlet var captureImageView: UIImageView!
     
@@ -59,6 +61,13 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         stillImageOutput.capturePhoto(with: settings, delegate: self)
     }
     
+    // MARK: CONSTRAINT OUTLETS
+    
+    @IBOutlet weak var preview_bottom: NSLayoutConstraint!
+    @IBOutlet weak var preview_trailing: NSLayoutConstraint!
+    @IBOutlet weak var preview_top: NSLayoutConstraint!
+    @IBOutlet weak var preview_leading: NSLayoutConstraint!
+    
     // MARK: INSTANCE PROPERTIES
     var captureSession: AVCaptureSession!
     var stillImageOutput: AVCapturePhotoOutput!
@@ -98,7 +107,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         self.view.addSubview(contactCardView)
         
         // topAnchor = a view's top edge. .constraint will add a constraint
-        cardHiddenConstraint = contactCardView.topAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50)
+        cardHiddenConstraint = contactCardView.topAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)
         cardVisibleConstraint = contactCardView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50)
 
         let cardViewControllerViewConstraints = [
@@ -214,3 +223,4 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
 
 }
+
