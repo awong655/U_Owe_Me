@@ -14,8 +14,6 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     // MARK: OUTLETS
     @IBOutlet weak var previewView: UIView!
     
-    @IBOutlet weak var dimmerLayer: UIView!
-    
     @IBOutlet var captureImageView: UIImageView!
     
     @IBOutlet weak var takePhotoButton: UIButton!
@@ -30,14 +28,16 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     
     @IBAction func OweMeClicked(_ sender: Any) {
         //openContacts(Sender: sender as? UIButton)
-        self.view.bringSubviewToFront(self.contactCard.view)
-        self.handleTapGesture()
+       // self.view.bringSubviewToFront(self.contactCard.view)
+        //self.handleTapGesture()
+        expandContacts()
     }
     
     @IBAction func IOweClicked(_ sender: Any) {
         //openContacts(Sender: sender as? UIButton)
-        self.view.bringSubviewToFront(self.contactCard.view)
-        self.handleTapGesture()
+        //self.view.bringSubviewToFront(self.contactCard.view)
+        //self.handleTapGesture()
+        expandContacts()
     }
     
     // is there a more efficient way of handling the UI?
@@ -78,6 +78,10 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     //private var contactCard: UIViewController!
     private var cardHiddenConstraint: NSLayoutConstraint!
     private var cardVisibleConstraint: NSLayoutConstraint!
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     // MARK: FUNCTIONS
     private func openContacts(Sender:UIButton!){
@@ -221,6 +225,19 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         super.viewWillDisappear(animated)
         self.captureSession.stopRunning()
     }
+    
+    func expandContacts(){
+        guard let cardContacts = storyboard?.instantiateViewController(withIdentifier: "HomeContactViewController") as? HomeContactViewController
+        else{
+            assertionFailure("No view controller ID ContactNav in storyboard")
+            return
+        }
+        
+        cardContacts.backingImage = view.makeShapshot()
+                
+        // presents modally
+        present(cardContacts, animated: false)
+        
+    }
 
 }
-

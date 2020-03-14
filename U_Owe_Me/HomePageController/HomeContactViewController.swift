@@ -12,11 +12,21 @@ import CoreData
 
 class HomeContactViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
     
+    // MARK: Constraint Outlets
+    @IBOutlet weak var backingImageTopInset: NSLayoutConstraint!
+    @IBOutlet weak var backingImageLeadingInset: NSLayoutConstraint!
+    @IBOutlet weak var backingImageTrailingInset: NSLayoutConstraint!
+    @IBOutlet weak var backingImageBottomInset: NSLayoutConstraint!
+    
     @IBAction func CloseContacts(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
     @IBOutlet weak var imageDisplay: UIImageView!
+    
+    @IBOutlet weak var backingImageView: UIImageView!
+    
+    @IBOutlet weak var dimmerLayer: UIView!
     
     @IBAction func saveClicked(_ sender: Any) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -51,15 +61,28 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var containerView: UIView!
     var tableData : [String] = []
     var filteredTableData = [String]()
     var resultSearchController = UISearchController()
     var selectedIndex : IndexPath?
     public var currentImage : UIImage?
+    var backingImage : UIImage?
+    
+    // MARK: animation instance vars
+    let animationDuration = 4.0
+    let backingImageEdgeInsets: CGFloat = 15.0
+    let cardCornerRadius: CGFloat = 10
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.backingImageView.image = backingImage
+        // TODO: remove this
+        self.containerView.isHidden = true
         if let img = currentImage{
             print(img)
             imageDisplay.image = img
@@ -79,6 +102,7 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        animateBackingImageIn()
         let contactStore = CNContactStore()
         if CNContactStore.authorizationStatus(for: .contacts) == .authorized{
             DispatchQueue.main.async{
@@ -154,4 +178,37 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
         self.selectedIndex = indexPath
     }
     
+}
+
+extension HomeContactViewController{
+    func configureBackingImageInPosition(presenting: Bool){
+        let edgeInset: CGFloat = presenting ? backingImageEdgeInsets : 0
+        let dimmerAlpha: CGFloat = presenting ? 0.3 : 0
+        let cornerRadius: CGFloat = presenting ? cardCornerRadius : 0
+        
+        backingImageLeadingInset.constant = edgeInset
+        backingImageTrailingInset.constant = edgeInset
+        let aspectRatio = backingImageView.frame.height / backingImageView.frame.width
+        backingImageTopInset.constant = edgeInset * aspectRatio
+        backingImageBottomInset.constant = edgeInset * aspectRatio
+        
+        dimmerLayer.alpha = dimmerAlpha
+        backingImageView.layer.cornerRadius = cornerRadius
+    }
+    
+    private func animateBackingImage(presenting: Bool){
+        // animation with trailing anonymous function
+        UIView.animate(withDuration: animationDuration) {
+            self.configureBackingImageInPosition(presenting: presenting)
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func animateBackingImageIn(){
+        self.animateBackingImage(presenting: true)
+    }
+    
+    func animateBackingImageOut(){
+        self.animateBackingImage(presenting: false)
+    }
 }

@@ -22,6 +22,7 @@
 		922F9FEF23AF03EE005AAA59 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FEE23AF03EE005AAA59 /* Errors.swift */; };
 		922F9FF623AF2A54005AAA59 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FF523AF2A54005AAA59 /* ContactModel.swift */; };
 		922F9FF823AF78CC005AAA59 /* HomeContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FF723AF78CC005AAA59 /* HomeContactViewController.swift */; };
+		92576633241B145E00E76567 /* view_snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92576632241B145E00E76567 /* view_snapshot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		922F9FEE23AF03EE005AAA59 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		922F9FF523AF2A54005AAA59 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
 		922F9FF723AF78CC005AAA59 /* HomeContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContactViewController.swift; sourceTree = "<group>"; };
+		92576632241B145E00E76567 /* view_snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = view_snapshot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		922F9FAE23AE8255005AAA59 /* U_Owe_Me */ = {
 			isa = PBXGroup;
 			children = (
+				92576631241B143900E76567 /* Helpers */,
 				922F9FF423AF1EE2005AAA59 /* Models */,
 				922F9FEB23AED1DB005AAA59 /* ContactsPageController */,
 				922F9FEA23AED1C7005AAA59 /* ActivityPageController */,
@@ -179,6 +182,14 @@
 				9209426123B030B6002D2A20 /* ActivityModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		92576631241B143900E76567 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				92576632241B145E00E76567 /* view_snapshot.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,6 +329,7 @@
 				922F9FB023AE8255005AAA59 /* AppDelegate.swift in Sources */,
 				922F9FF623AF2A54005AAA59 /* ContactModel.swift in Sources */,
 				9209426023B02D12002D2A20 /* ActivityViewController.swift in Sources */,
+				92576633241B145E00E76567 /* view_snapshot.swift in Sources */,
 				9209425E23B0028A002D2A20 /* U_Owe_Me.xcdatamodeld in Sources */,
 				922F9FE423AE8A48005AAA59 /* DefaultPageViewController.swift in Sources */,
 				922F9FF823AF78CC005AAA59 /* HomeContactViewController.swift in Sources */,
