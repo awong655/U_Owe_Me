@@ -31,8 +31,10 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func saveClicked(_ sender: Any) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
+        // saving to core data
         let context = appDelegate.persistentContainer.viewContext
         
+        // return entity named pending transaction in the current data store context
         let entity = NSEntityDescription.entity(forEntityName: "PendingTransaction", in: context)
         
         let newPendingTransaction = NSManagedObject(entity: entity!, insertInto: context)
@@ -186,13 +188,17 @@ extension HomeContactViewController{
         let dimmerAlpha: CGFloat = presenting ? 0.3 : 0
         let cornerRadius: CGFloat = presenting ? cardCornerRadius : 0
         
+        
         backingImageLeadingInset.constant = edgeInset
-        backingImageTrailingInset.constant = edgeInset
+        backingImageTrailingInset.constant = -edgeInset
         let aspectRatio = backingImageView.frame.height / backingImageView.frame.width
         backingImageTopInset.constant = edgeInset * aspectRatio
         backingImageBottomInset.constant = edgeInset * aspectRatio
         
         dimmerLayer.alpha = dimmerAlpha
+        
+        // https://stackoverflow.com/questions/4314640/setting-corner-radius-on-uiimageview-not-working
+        backingImageView.layer.masksToBounds = true
         backingImageView.layer.cornerRadius = cornerRadius
     }
     

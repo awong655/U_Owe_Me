@@ -183,11 +183,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bht-6J-CfV" userLabel="Background Image View">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pgm-XI-JDa" userLabel="DimmerLayer">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <viewLayoutGuide key="safeArea" id="Dfc-SC-Tox"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fM4-Fl-8W3" userLabel="ContainerView">
                                 <rect key="frame" x="0.0" y="42" width="375" height="625"/>
                                 <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0C5-zM-pTV">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="625"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </scrollView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lgw-zI-LDS">
                                         <rect key="frame" x="0.0" y="133" width="375" height="492"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -244,12 +254,6 @@
                                     <constraint firstItem="lgw-zI-LDS" firstAttribute="leading" secondItem="fM4-Fl-8W3" secondAttribute="leading" id="smE-8g-gAc"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pgm-XI-JDa" userLabel="DimmerLayer">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <viewLayoutGuide key="safeArea" id="Dfc-SC-Tox"/>
-                            </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="fM4-Fl-8W3" firstAttribute="leading" secondItem="E9U-Ef-xQF" secondAttribute="leading" id="EJq-9h-frq"/>
@@ -260,7 +264,7 @@
                             <constraint firstItem="fM4-Fl-8W3" firstAttribute="top" secondItem="fnh-Q6-RZ7" secondAttribute="top" constant="22" id="ffa-0M-lC6"/>
                             <constraint firstItem="fnh-Q6-RZ7" firstAttribute="bottom" secondItem="bht-6J-CfV" secondAttribute="bottom" id="ltp-To-dyO"/>
                             <constraint firstAttribute="bottom" secondItem="bht-6J-CfV" secondAttribute="bottom" id="qPr-MR-Tdj"/>
-                            <constraint firstItem="bht-6J-CfV" firstAttribute="top" secondItem="fnh-Q6-RZ7" secondAttribute="top" id="vqR-0R-02q"/>
+                            <constraint firstItem="bht-6J-CfV" firstAttribute="top" secondItem="E9U-Ef-xQF" secondAttribute="top" id="vqR-0R-02q"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fnh-Q6-RZ7"/>
                     </view>
