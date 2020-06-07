@@ -18,6 +18,8 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var backingImageTrailingInset: NSLayoutConstraint!
     @IBOutlet weak var backingImageBottomInset: NSLayoutConstraint!
     
+    @IBOutlet weak var ContactScrollView: UIScrollView!
+    
     @IBAction func CloseContacts(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -83,8 +85,11 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         self.backingImageView.image = backingImage
-        // TODO: remove this
-        self.containerView.isHidden = true
+        
+        // rounding corners
+        ContactScrollView.layer.masksToBounds = true
+        ContactScrollView.layer.cornerRadius = 10
+        
         if let img = currentImage{
             print(img)
             imageDisplay.image = img
@@ -183,6 +188,11 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
 }
 
 extension HomeContactViewController{
+    
+    func configureContactScrollIn(presenting: Bool){
+        
+    }
+    
     func configureBackingImageInPosition(presenting: Bool){
         let edgeInset: CGFloat = presenting ? backingImageEdgeInsets : 0
         let dimmerAlpha: CGFloat = presenting ? 0.3 : 0
@@ -206,6 +216,14 @@ extension HomeContactViewController{
         // animation with trailing anonymous function
         UIView.animate(withDuration: animationDuration) {
             self.configureBackingImageInPosition(presenting: presenting)
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func animateContactsIn(presenting: Bool){
+        UIView.animate(withDuration: animationDuration){
+            self.configureContactScrollIn(presenting: presenting)
+            self.ContactScrollView.center.y -= self.ContactScrollView.bounds.height
             self.view.layoutIfNeeded()
         }
     }
