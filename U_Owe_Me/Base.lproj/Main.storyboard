@@ -190,7 +190,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <viewLayoutGuide key="safeArea" id="Dfc-SC-Tox"/>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xOF-c0-egq">
+                            <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xOF-c0-egq">
                                 <rect key="frame" x="0.0" y="115" width="375" height="552"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lgw-zI-LDS">
@@ -269,6 +269,7 @@
                         <viewLayoutGuide key="safeArea" id="fnh-Q6-RZ7"/>
                     </view>
                     <connections>
+                        <outlet property="ContactCardTopConstraint" destination="9XB-hA-9nX" id="LV2-DX-Qtp"/>
                         <outlet property="ContactScrollView" destination="xOF-c0-egq" id="Fm9-1d-KlR"/>
                         <outlet property="backingImageBottomInset" destination="qPr-MR-Tdj" id="aJJ-qV-GFB"/>
                         <outlet property="backingImageLeadingInset" destination="chC-9j-yai" id="0NT-16-aGw"/>

@@ -30,6 +30,8 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var dimmerLayer: UIView!
     
+    @IBOutlet weak var ContactCardTopConstraint: NSLayoutConstraint!
+    
     @IBAction func saveClicked(_ sender: Any) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
@@ -74,7 +76,7 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
     var backingImage : UIImage?
     
     // MARK: animation instance vars
-    let animationDuration = 4.0
+    let animationDuration = 0.5
     let backingImageEdgeInsets: CGFloat = 15.0
     let cardCornerRadius: CGFloat = 10
     
@@ -86,9 +88,6 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         self.backingImageView.image = backingImage
         
-        // rounding corners
-        ContactScrollView.layer.masksToBounds = true
-        ContactScrollView.layer.cornerRadius = 10
         
         if let img = currentImage{
             print(img)
@@ -110,6 +109,7 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         animateBackingImageIn()
+        animateContactsIn()
         let contactStore = CNContactStore()
         if CNContactStore.authorizationStatus(for: .contacts) == .authorized{
             DispatchQueue.main.async{
@@ -189,8 +189,17 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
 
 extension HomeContactViewController{
     
-    func configureContactScrollIn(presenting: Bool){
+    func configureContactScrollIn(position: CGFloat) -> CGFloat{
+        // rounding corners
+        self.ContactScrollView.layer.masksToBounds = true
+        self.ContactScrollView.layer.cornerRadius = 10
         
+        let originalContactY = self.ContactScrollView.frame.origin.y
+        
+        self.ContactScrollView.frame.origin.y = position
+        self.ContactScrollView.isHidden = false
+        
+        return originalContactY
     }
     
     func configureBackingImageInPosition(presenting: Bool){
@@ -220,12 +229,20 @@ extension HomeContactViewController{
         }
     }
     
-    private func animateContactsIn(presenting: Bool){
+    private func animateContacts(presenting: Bool){
+        
+        let originalContactY = self.configureContactScrollIn(position: view.frame.height)
+        
+        let position: CGFloat = presenting ? originalContactY : view.frame.height
+        
         UIView.animate(withDuration: animationDuration){
-            self.configureContactScrollIn(presenting: presenting)
-            self.ContactScrollView.center.y -= self.ContactScrollView.bounds.height
+            self.ContactScrollView.frame.origin.y = position
             self.view.layoutIfNeeded()
         }
+    }
+    
+    func animateContactsIn(){
+        self.animateContacts(presenting: true)
     }
     
     func animateBackingImageIn(){
