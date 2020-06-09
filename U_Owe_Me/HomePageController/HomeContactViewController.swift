@@ -18,11 +18,7 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var backingImageTrailingInset: NSLayoutConstraint!
     @IBOutlet weak var backingImageBottomInset: NSLayoutConstraint!
     
-    @IBOutlet weak var ContactScrollView: UIScrollView!
-    
-    @IBAction func CloseContacts(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
+    @IBOutlet weak var ContactView: UIView!
     
     @IBOutlet weak var imageDisplay: UIImageView!
     
@@ -65,9 +61,14 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     
+    @IBAction func dismissClicked(_ sender: Any) {
+        self.animateContactListOut(){
+            self.dismiss(animated: false, completion: nil)
+        }
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var containerView: UIView!
     var tableData : [String] = []
     var filteredTableData = [String]()
     var resultSearchController = UISearchController()
@@ -108,8 +109,9 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        animateBackingImageIn()
-        animateContactsIn()
+//        animateBackingImageIn()
+//        animateContactsIn()
+        self.animateContactListIn()
         let contactStore = CNContactStore()
         if CNContactStore.authorizationStatus(for: .contacts) == .authorized{
             DispatchQueue.main.async{
@@ -168,17 +170,19 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
         self.tableView.reloadData()
     }
     
-    // set view for footer
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 60))
-        footerView.backgroundColor = UIColor(red:0.95, green:0.96, blue:0.96, alpha:1.0)
-        
-        return footerView
-    }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 60
-    }
+// removed footer *****************
+// set view for footer
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 60))
+//        footerView.backgroundColor = UIColor(red:0.95, green:0.96, blue:0.96, alpha:1.0)
+//
+//        return footerView
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 60
+//    }
     
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath){
@@ -189,15 +193,21 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
 
 extension HomeContactViewController{
     
-    func configureContactScrollIn(position: CGFloat) -> CGFloat{
+    func configureContactScrollIn(presenting: Bool) -> CGFloat{
         // rounding corners
-        self.ContactScrollView.layer.masksToBounds = true
-        self.ContactScrollView.layer.cornerRadius = 10
+        // TODO: move to storyboard
+        self.ContactView.layer.masksToBounds = true
+        self.ContactView.layer.cornerRadius = 10
         
-        let originalContactY = self.ContactScrollView.frame.origin.y
+        let originalContactY = self.ContactView.frame.origin.y
         
-        self.ContactScrollView.frame.origin.y = position
-        self.ContactScrollView.isHidden = false
+        // move off screen if presenting, do not move off screen if dismissing
+        if(presenting){
+            self.ContactView.frame.origin.y = view.frame.height
+        }
+        
+        // TODO: should be able to move to storyboard
+        self.ContactView.isHidden = false
         
         return originalContactY
     }
@@ -229,27 +239,33 @@ extension HomeContactViewController{
         }
     }
     
-    private func animateContacts(presenting: Bool){
-        
-        let originalContactY = self.configureContactScrollIn(position: view.frame.height)
+    private func animateContacts(presenting: Bool, completion: @escaping(()->())){
+    
+        let originalContactY = configureContactScrollIn(presenting: presenting)
         
         let position: CGFloat = presenting ? originalContactY : view.frame.height
         
-        UIView.animate(withDuration: animationDuration){
-            self.ContactScrollView.frame.origin.y = position
-            self.view.layoutIfNeeded()
-        }
+        UIView.animate(withDuration: animationDuration,
+            delay: 0.0,
+            animations: {
+                self.ContactView.frame.origin.y = position
+                self.view.layoutIfNeeded()
+            },
+            completion: {
+                (value: Bool) in
+                    completion()
+            }
+        )
     }
     
-    func animateContactsIn(){
-        self.animateContacts(presenting: true)
-    }
-    
-    func animateBackingImageIn(){
+    func animateContactListIn(){
+        self.animateContacts(presenting: true, completion: {})
         self.animateBackingImage(presenting: true)
     }
     
-    func animateBackingImageOut(){
+    func animateContactListOut(completion: @escaping( () -> Void) ){
         self.animateBackingImage(presenting: false)
+        self.animateContacts(presenting: false, completion: completion)
     }
+    
 }
