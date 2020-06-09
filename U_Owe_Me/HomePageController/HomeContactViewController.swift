@@ -12,17 +12,29 @@ import CoreData
 
 class HomeContactViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
     
-    @IBAction func CloseContacts(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
+    // MARK: Constraint Outlets
+    @IBOutlet weak var backingImageTopInset: NSLayoutConstraint!
+    @IBOutlet weak var backingImageLeadingInset: NSLayoutConstraint!
+    @IBOutlet weak var backingImageTrailingInset: NSLayoutConstraint!
+    @IBOutlet weak var backingImageBottomInset: NSLayoutConstraint!
+    
+    @IBOutlet weak var ContactView: UIView!
     
     @IBOutlet weak var imageDisplay: UIImageView!
+    
+    @IBOutlet weak var backingImageView: UIImageView!
+    
+    @IBOutlet weak var dimmerLayer: UIView!
+    
+    @IBOutlet weak var ContactCardTopConstraint: NSLayoutConstraint!
     
     @IBAction func saveClicked(_ sender: Any) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
+        // saving to core data
         let context = appDelegate.persistentContainer.viewContext
         
+        // return entity named pending transaction in the current data store context
         let entity = NSEntityDescription.entity(forEntityName: "PendingTransaction", in: context)
         
         let newPendingTransaction = NSManagedObject(entity: entity!, insertInto: context)
@@ -49,6 +61,12 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     
+    @IBAction func dismissClicked(_ sender: Any) {
+        self.animateContactListOut(){
+            self.dismiss(animated: false, completion: nil)
+        }
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     
     var tableData : [String] = []
@@ -56,9 +74,21 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
     var resultSearchController = UISearchController()
     var selectedIndex : IndexPath?
     public var currentImage : UIImage?
+    var backingImage : UIImage?
+    
+    // MARK: animation instance vars
+    let animationDuration = 0.5
+    let backingImageEdgeInsets: CGFloat = 15.0
+    let cardCornerRadius: CGFloat = 10
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.backingImageView.image = backingImage
+        
         
         if let img = currentImage{
             print(img)
@@ -79,6 +109,9 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+//        animateBackingImageIn()
+//        animateContactsIn()
+        self.animateContactListIn()
         let contactStore = CNContactStore()
         if CNContactStore.authorizationStatus(for: .contacts) == .authorized{
             DispatchQueue.main.async{
@@ -137,21 +170,102 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
         self.tableView.reloadData()
     }
     
-    // set view for footer
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 60))
-        footerView.backgroundColor = UIColor(red:0.95, green:0.96, blue:0.96, alpha:1.0)
-        
-        return footerView
-    }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 60
-    }
+// removed footer *****************
+// set view for footer
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 60))
+//        footerView.backgroundColor = UIColor(red:0.95, green:0.96, blue:0.96, alpha:1.0)
+//
+//        return footerView
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 60
+//    }
     
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath){
         self.selectedIndex = indexPath
+    }
+    
+}
+
+extension HomeContactViewController{
+    
+    func configureContactScrollIn(presenting: Bool) -> CGFloat{
+        // rounding corners
+        // TODO: move to storyboard
+        self.ContactView.layer.masksToBounds = true
+        self.ContactView.layer.cornerRadius = 10
+        
+        let originalContactY = self.ContactView.frame.origin.y
+        
+        // move off screen if presenting, do not move off screen if dismissing
+        if(presenting){
+            self.ContactView.frame.origin.y = view.frame.height
+        }
+        
+        // TODO: should be able to move to storyboard
+        self.ContactView.isHidden = false
+        
+        return originalContactY
+    }
+    
+    func configureBackingImageInPosition(presenting: Bool){
+        let edgeInset: CGFloat = presenting ? backingImageEdgeInsets : 0
+        let dimmerAlpha: CGFloat = presenting ? 0.3 : 0
+        let cornerRadius: CGFloat = presenting ? cardCornerRadius : 0
+        
+        
+        backingImageLeadingInset.constant = edgeInset
+        backingImageTrailingInset.constant = -edgeInset
+        let aspectRatio = backingImageView.frame.height / backingImageView.frame.width
+        backingImageTopInset.constant = edgeInset * aspectRatio
+        backingImageBottomInset.constant = edgeInset * aspectRatio
+        
+        dimmerLayer.alpha = dimmerAlpha
+        
+        // https://stackoverflow.com/questions/4314640/setting-corner-radius-on-uiimageview-not-working
+        backingImageView.layer.masksToBounds = true
+        backingImageView.layer.cornerRadius = cornerRadius
+    }
+    
+    private func animateBackingImage(presenting: Bool){
+        // animation with trailing anonymous function
+        UIView.animate(withDuration: animationDuration) {
+            self.configureBackingImageInPosition(presenting: presenting)
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func animateContacts(presenting: Bool, completion: @escaping(()->())){
+    
+        let originalContactY = configureContactScrollIn(presenting: presenting)
+        
+        let position: CGFloat = presenting ? originalContactY : view.frame.height
+        
+        UIView.animate(withDuration: animationDuration,
+            delay: 0.0,
+            animations: {
+                self.ContactView.frame.origin.y = position
+                self.view.layoutIfNeeded()
+            },
+            completion: {
+                (value: Bool) in
+                    completion()
+            }
+        )
+    }
+    
+    func animateContactListIn(){
+        self.animateContacts(presenting: true, completion: {})
+        self.animateBackingImage(presenting: true)
+    }
+    
+    func animateContactListOut(completion: @escaping( () -> Void) ){
+        self.animateBackingImage(presenting: false)
+        self.animateContacts(presenting: false, completion: completion)
     }
     
 }
