@@ -28,6 +28,8 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var ContactCardTopConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var ContactNavContainer: UIView!
+    
     @IBAction func saveClicked(_ sender: Any) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
@@ -109,8 +111,9 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        animateBackingImageIn()
-//        animateContactsIn()
+        
+        self.ContactView.backgroundColor = UIColor(red: (247/255), green: (247/255), blue: (247/255), alpha: 1)
+        
         self.animateContactListIn()
         let contactStore = CNContactStore()
         if CNContactStore.authorizationStatus(for: .contacts) == .authorized{
