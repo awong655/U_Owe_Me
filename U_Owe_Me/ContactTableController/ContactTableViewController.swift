@@ -109,4 +109,38 @@ class ContactTableViewController: UITableViewController {
         self.selectedIndex = indexPath
     }
     
+//    override func tableView(_ tableView: UITableView,
+//                            trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//
+//        let iOweAction = UIContextualAction(style: .destructive, title: "I Owe"){ (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+//
+//        }
+//        let oweMeAction = UIContextualAction(style: .normal, title: "Owe Me"){ (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+//
+//        }
+//        oweMeAction.backgroundColor =  .green
+//        let swipeConfig = UISwipeActionsConfiguration(actions: [iOweAction, oweMeAction])
+//        return swipeConfig
+//    }
+    
+    override func tableView(_ tableView: UITableView,
+                            editActionsForRowAt indexPath: IndexPath)
+        -> [UITableViewRowAction]? {
+
+            let iOweTitle = NSLocalizedString("I Owee", comment: "I owe action")
+            let iOweAction = UITableViewRowAction(style: .destructive,
+                                                    title: iOweTitle) { (action, indexPath) in
+
+            }
+
+            let oweMeTitle = NSLocalizedString("Owe Me", comment: "Owe me action")
+            let oweMeAction = UITableViewRowAction(style: .normal,
+                                                      title: oweMeTitle) { (action, indexPath) in
+
+            }
+            oweMeAction.backgroundColor = .green
+            return [oweMeAction, iOweAction]
+    }
+    
+    
 }
