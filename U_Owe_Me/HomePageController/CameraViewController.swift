@@ -20,18 +20,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     
     @IBOutlet weak var captureViewClose: UIButton!
     
-    @IBOutlet weak var oweMe: UIButton!
-    
     @IBOutlet weak var iOwe: UIButton!
-    
-    @IBOutlet weak var amountText: UITextField!
-    
-    @IBAction func OweMeClicked(_ sender: Any) {
-        //openContacts(Sender: sender as? UIButton)
-       // self.view.bringSubviewToFront(self.contactCard.view)
-        //self.handleTapGesture()
-        expandContacts()
-    }
     
     @IBAction func IOweClicked(_ sender: Any) {
         //openContacts(Sender: sender as? UIButton)
@@ -44,9 +33,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     @IBAction func didCaptureViewClose(_ sender: Any) {
         self.captureImageView.image = nil
         self.captureViewClose.isHidden = true
-        self.oweMe.isHidden = true
         self.iOwe.isHidden = true
-        self.amountText.isHidden = true
         self.takePhotoButton.isHidden = false
     }
     
@@ -54,9 +41,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     @IBAction func didTakePhoto(_ sender: Any) {
         self.takePhotoButton.isHidden = true
         self.captureViewClose.isHidden = false
-        self.oweMe.isHidden = false
         self.iOwe.isHidden = false
-        self.amountText.isHidden = false
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
         stillImageOutput.capturePhoto(with: settings, delegate: self)
     }
@@ -160,9 +145,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         view.bringSubviewToFront(captureImageView)
         view.bringSubviewToFront(takePhotoButton)
         view.bringSubviewToFront(captureViewClose)
-        view.bringSubviewToFront(oweMe)
         view.bringSubviewToFront(iOwe)
-        view.bringSubviewToFront(amountText)
 //        self.view.sendSubviewToBack(captureImageView)
 //        self.view.sendSubviewToBack(previewView)
         

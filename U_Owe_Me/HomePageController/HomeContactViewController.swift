@@ -10,7 +10,8 @@ import UIKit
 import Contacts
 import CoreData
 
-class HomeContactViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
+//class HomeContactViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
+class HomeContactViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: Constraint Outlets
     @IBOutlet weak var backingImageTopInset: NSLayoutConstraint!
@@ -97,16 +98,16 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
             imageDisplay.image = img
         }
         
-        resultSearchController = ({
-            let controller = UISearchController(searchResultsController: nil)
-            controller.searchResultsUpdater = self
-            controller.dimsBackgroundDuringPresentation = false
-            controller.searchBar.sizeToFit()
-            
-            tableView.tableHeaderView = controller.searchBar
-            
-            return controller
-        })()
+//        resultSearchController = ({
+//            let controller = UISearchController(searchResultsController: nil)
+//            controller.searchResultsUpdater = self
+//            controller.dimsBackgroundDuringPresentation = false
+//            controller.searchBar.sizeToFit()
+//
+//            tableView.tableHeaderView = controller.searchBar
+//
+//            return controller
+//        })()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -115,22 +116,22 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
         self.ContactView.backgroundColor = UIColor(red: (247/255), green: (247/255), blue: (247/255), alpha: 1)
         
         self.animateContactListIn()
-        let contactStore = CNContactStore()
-        if CNContactStore.authorizationStatus(for: .contacts) == .authorized{
-            DispatchQueue.main.async{
-                let keysToFetch = [CNContactGivenNameKey, CNContactFamilyNameKey]
-                let fetchReq = CNContactFetchRequest(keysToFetch: keysToFetch as [CNKeyDescriptor])
-                do{
-                    try contactStore.enumerateContacts(with: fetchReq){contact,stop in
-                        let newContact = ContactModel(firstName: contact.givenName, lastName: contact.familyName)
-                        self.tableData.append(newContact.givenName + " " + newContact.familyName)
-                    }
-                    self.tableView.reloadData()
-                }catch let enumerateError{
-                    print(enumerateError.localizedDescription)
-                }
-            }
-        }
+//        let contactStore = CNContactStore()
+//        if CNContactStore.authorizationStatus(for: .contacts) == .authorized{
+//            DispatchQueue.main.async{
+//                let keysToFetch = [CNContactGivenNameKey, CNContactFamilyNameKey]
+//                let fetchReq = CNContactFetchRequest(keysToFetch: keysToFetch as [CNKeyDescriptor])
+//                do{
+//                    try contactStore.enumerateContacts(with: fetchReq){contact,stop in
+//                        let newContact = ContactModel(firstName: contact.givenName, lastName: contact.familyName)
+//                        self.tableData.append(newContact.givenName + " " + newContact.familyName)
+//                    }
+//                    self.tableView.reloadData()
+//                }catch let enumerateError{
+//                    print(enumerateError.localizedDescription)
+//                }
+//            }
+//        }
     }
     
     // MARK: - Table view data source
@@ -163,15 +164,15 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
     
-    func updateSearchResults(for searchController: UISearchController) {
-        filteredTableData.removeAll(keepingCapacity: false)
-        
-        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
-        let array = (tableData as NSArray).filtered(using: searchPredicate)
-        filteredTableData = array as! [String]
-        
-        self.tableView.reloadData()
-    }
+//    func updateSearchResults(for searchController: UISearchController) {
+//        filteredTableData.removeAll(keepingCapacity: false)
+//
+//        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
+//        let array = (tableData as NSArray).filtered(using: searchPredicate)
+//        filteredTableData = array as! [String]
+//
+//        self.tableView.reloadData()
+//    }
     
     
 // removed footer *****************
