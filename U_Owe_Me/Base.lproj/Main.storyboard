@@ -238,18 +238,19 @@
         <scene sceneID="qrS-Da-i3g">
             <objects>
                 <tableViewController id="cGB-Ak-xyF" userLabel="Root Contact View Controller" customClass="ContactTableViewController" customModule="U_Owe_Me" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tsE-V8-Yrs">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="520"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelection="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tsE-V8-Yrs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="451"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactInList" id="54o-TC-K5u">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ContactInList" id="54o-TC-K5u">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="54o-TC-K5u" id="dHg-R8-A6W">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -272,18 +273,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rw6-6C-eHr">
-                                <rect key="frame" x="0.0" y="-5" width="375" height="520"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="451"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="cGB-Ak-xyF" kind="embed" id="Zh8-kY-HjF"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWQ-1A-Tga">
-                                <rect key="frame" x="252" y="438" width="100" height="57"/>
+                                <rect key="frame" x="297" y="458" width="78" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="4YB-e8-yg2"/>
-                                    <constraint firstAttribute="width" constant="100" id="bBq-rd-SQZ"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                 <state key="normal" title="NEXT">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -294,16 +295,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="GzD-bN-ct2" firstAttribute="bottom" secondItem="rWQ-1A-Tga" secondAttribute="bottom" constant="20" id="MxJ-jX-CTY"/>
-                            <constraint firstItem="GzD-bN-ct2" firstAttribute="trailing" secondItem="rWQ-1A-Tga" secondAttribute="trailing" constant="23" id="aK0-LY-Iib"/>
+                            <constraint firstItem="rWQ-1A-Tga" firstAttribute="leading" secondItem="GzD-bN-ct2" secondAttribute="leading" constant="297" id="7Ea-nX-ntz"/>
+                            <constraint firstItem="rWQ-1A-Tga" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GzD-bN-ct2" secondAttribute="trailing" id="MsM-Ni-W7T"/>
+                            <constraint firstItem="rWQ-1A-Tga" firstAttribute="bottom" secondItem="GzD-bN-ct2" secondAttribute="bottom" id="r1V-vU-1yB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GzD-bN-ct2"/>
                     </view>
-                    <navigationItem key="navigationItem" id="2T1-6M-cOg"/>
+                    <navigationItem key="navigationItem" title="Select Contacts" id="2T1-6M-cOg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cRY-p6-ewu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1708.6956521739132" y="1338.5869565217392"/>
+            <point key="canvasLocation" x="1708" y="1338.08095952024"/>
         </scene>
         <!--Contact Form View Controller-->
         <scene sceneID="qFA-KT-QtL">

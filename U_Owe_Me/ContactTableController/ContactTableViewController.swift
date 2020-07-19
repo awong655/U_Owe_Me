@@ -12,14 +12,17 @@ import CoreData
 
 class ContactTableViewController: UITableViewController {
     
-    var tableData : [String] = []
+    var ContactData : [CNContact] = []
+    var ContactNames : [String] = []
     var filteredTableData = [String]()
     var resultSearchController = UISearchController()
     var selectedIndex : IndexPath?
+    var selectedContacts: [String:CNContact] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.allowsMultipleSelectionDuringEditing = true
+        tableView.setEditing(true, animated: false)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -45,7 +48,7 @@ class ContactTableViewController: UITableViewController {
 //                do{
 //                    try contactStore.enumerateContacts(with: fetchReq){contact,stop in
 //                        let newContact = ContactModel(firstName: contact.givenName, lastName: contact.familyName)
-//                        self.tableData.append(newContact.givenName + " " + newContact.familyName)
+//                        self.ContactNames.append(newContact.givenName + " " + newContact.familyName)
 //                    }
 //                    self.tableView.reloadData()
 //                }catch let enumerateError{
@@ -66,7 +69,8 @@ class ContactTableViewController: UITableViewController {
                 do{
                     try contactStore.enumerateContacts(with: fetchReq){contact,stop in
                         let newContact = ContactModel(firstName: contact.givenName, lastName: contact.familyName)
-                        self.tableData.append(newContact.givenName + " " + newContact.familyName)
+                        self.ContactNames.append(newContact.givenName + " " + newContact.familyName)
+                        self.ContactData.append(contact)
                     }
                     self.tableView.reloadData()
                 }catch let enumerateError{
@@ -87,18 +91,17 @@ class ContactTableViewController: UITableViewController {
         if (resultSearchController.isActive){
             return filteredTableData.count
         }else{
-            return self.tableData.count
+            return self.ContactNames.count
         }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactInList", for: indexPath)
-
         if (resultSearchController.isActive) {
             cell.textLabel?.text = filteredTableData[indexPath.item]
         }
         else{
-            cell.textLabel?.text = tableData[indexPath.item]
+            cell.textLabel?.text = ContactNames[indexPath.item]
 
         }
         return cell
@@ -106,8 +109,28 @@ class ContactTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath){
-        self.selectedIndex = indexPath
+        guard let cell = tableView.cellForRow(at: indexPath) else{return}
+        guard let cellText = cell.textLabel?.text else{return}
+        
+        //if selectedContacts[cellText] != nil {
+             selectedContacts.updateValue(ContactData[indexPath.item], forKey: cellText)
+        //}
+            
+        NSLog(cellText)
+//        cell.accessoryType = cell.isSelected ? .checkmark : .none
     }
+    override func tableView(_ tableView: UITableView,
+                            didDeselectRowAt indexPath: IndexPath){
+        guard let cell = tableView.cellForRow(at: indexPath) else{return}
+        guard let cellText = cell.textLabel?.text else{return}
+        
+        if selectedContacts[cellText] != nil {
+            selectedContacts.removeValue(forKey: cellText)
+        }
+        
+        NSLog(cellText)
+    }
+    
     
 //    override func tableView(_ tableView: UITableView,
 //                            trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
