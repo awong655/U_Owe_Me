@@ -11,9 +11,9 @@ import Contacts
 
 class ContactFormModel{
     var imageModel : ImageModel?
-    var contactModel : [CNContact]?
+    var contactModel : [String:CNContact]?
     
-    init(_ imgModel: ImageModel?, _ cntModel:[CNContact]?){
+    init(_ imgModel: ImageModel?, _ cntModel:[String:CNContact]?){
         self.imageModel = imgModel
         self.contactModel = cntModel
     }

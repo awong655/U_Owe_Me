@@ -14,9 +14,6 @@ class ContactFormViewController: UIViewController {
     var delegate : FormDataProtocol?
     var contactFormModel : ContactFormModel?
     
-    private var imageData : ImageModel?
-    private var contactData : [CNContact]?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         contactFormModel = delegate?.setFormData()

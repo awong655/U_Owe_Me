@@ -11,6 +11,7 @@ import UIKit
 class ContainerViewController: UIViewController {
     
     var contactFormModel : ContactFormModel?
+    var tableVC : ContactTableViewController?
     var delegate : FormDataProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +23,16 @@ class ContainerViewController: UIViewController {
         if let vc = segue.destination as? ContactFormViewController{
             print("hooplah")
             vc.delegate = self
+        }else if let vc = segue.destination as? ContactTableViewController{
+            tableVC = vc
         }
+        
     }
 }
 
 extension ContainerViewController : FormDataProtocol{
     func setFormData() -> ContactFormModel? {
-        //self.contactFormModel.contactModel = 
+        self.contactFormModel?.contactModel = tableVC?.selectedContacts
         return self.contactFormModel
     }
 }

@@ -16,30 +16,5 @@ class ContactNavController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var root = self.navigationController?.viewControllers.first
-        // Do any additional setup after loading the view.
-    }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let vc = segue.destination as? ContainerViewController{
-//            print("hooray")
-//            vc.delegate = self
-//        }
-//    }
-}
-
-extension ContactNavController : UINavigationControllerDelegate{
-    func navigationController(_ navigationController: UINavigationController,
-                              willShow viewController: UIViewController,
-                              animated: Bool){
-        if let vc = viewController as? ContainerViewController{
-            vc.delegate = self
-        }
-    }
-}
-
-extension ContactNavController : FormDataProtocol{
-    func setFormData() -> ContactFormModel? {
-        return (ContactFormModel(self.imageModel, self.contactList))
     }
 }
