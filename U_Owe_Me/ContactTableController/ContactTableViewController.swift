@@ -165,5 +165,4 @@ class ContactTableViewController: UITableViewController {
             return [oweMeAction, iOweAction]
     }
     
-    
 }

@@ -11,7 +11,10 @@
 		9209426023B02D12002D2A20 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9209425F23B02D12002D2A20 /* ActivityViewController.swift */; };
 		9209426223B030B6002D2A20 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9209426123B030B6002D2A20 /* ActivityModel.swift */; };
 		920C455924918B0900F3FE3F /* ContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C455824918B0900F3FE3F /* ContactTableViewController.swift */; };
-		920FE53724BBC66300D152BE /* ContactTableContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920FE53624BBC66300D152BE /* ContactTableContainerController.swift */; };
+		92295D0324C4F32B005F46C1 /* ContactFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92295D0224C4F32B005F46C1 /* ContactFormViewController.swift */; };
+		92295D0524C4F49C005F46C1 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92295D0424C4F49C005F46C1 /* ImageModel.swift */; };
+		92295D0924C530B8005F46C1 /* ContactNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92295D0824C530B8005F46C1 /* ContactNavController.swift */; };
+		92295D0B24C5393D005F46C1 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92295D0A24C5393D005F46C1 /* ContainerViewController.swift */; };
 		922F9FB023AE8255005AAA59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FAF23AE8255005AAA59 /* AppDelegate.swift */; };
 		922F9FB923AE8255005AAA59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 922F9FB723AE8255005AAA59 /* Main.storyboard */; };
 		922F9FBB23AE8256005AAA59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 922F9FBA23AE8256005AAA59 /* Assets.xcassets */; };
@@ -25,6 +28,8 @@
 		922F9FF623AF2A54005AAA59 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FF523AF2A54005AAA59 /* ContactModel.swift */; };
 		922F9FF823AF78CC005AAA59 /* HomeContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FF723AF78CC005AAA59 /* HomeContactViewController.swift */; };
 		92576633241B145E00E76567 /* view_snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92576632241B145E00E76567 /* view_snapshot.swift */; };
+		9292C76724DCF2DF00EE9EF9 /* ContactFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9292C76624DCF2DF00EE9EF9 /* ContactFormModel.swift */; };
+		9292C76924DCF64100EE9EF9 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9292C76824DCF64100EE9EF9 /* Protocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +54,10 @@
 		9209425F23B02D12002D2A20 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		9209426123B030B6002D2A20 /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
 		920C455824918B0900F3FE3F /* ContactTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
-		920FE53624BBC66300D152BE /* ContactTableContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableContainerController.swift; sourceTree = "<group>"; };
+		92295D0224C4F32B005F46C1 /* ContactFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormViewController.swift; sourceTree = "<group>"; };
+		92295D0424C4F49C005F46C1 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		92295D0824C530B8005F46C1 /* ContactNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNavController.swift; sourceTree = "<group>"; };
+		92295D0A24C5393D005F46C1 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		922F9FAC23AE8255005AAA59 /* U_Owe_Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = U_Owe_Me.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		922F9FAF23AE8255005AAA59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		922F9FB823AE8255005AAA59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,6 +77,8 @@
 		922F9FF523AF2A54005AAA59 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
 		922F9FF723AF78CC005AAA59 /* HomeContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContactViewController.swift; sourceTree = "<group>"; };
 		92576632241B145E00E76567 /* view_snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = view_snapshot.swift; sourceTree = "<group>"; };
+		9292C76624DCF2DF00EE9EF9 /* ContactFormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormModel.swift; sourceTree = "<group>"; };
+		9292C76824DCF64100EE9EF9 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,7 +179,9 @@
 				922F9FE623AED0CF005AAA59 /* CameraViewController.swift */,
 				922F9FE823AED1C1005AAA59 /* CameraServices.swift */,
 				922F9FF723AF78CC005AAA59 /* HomeContactViewController.swift */,
-				920FE53624BBC66300D152BE /* ContactTableContainerController.swift */,
+				92295D0224C4F32B005F46C1 /* ContactFormViewController.swift */,
+				92295D0824C530B8005F46C1 /* ContactNavController.swift */,
+				92295D0A24C5393D005F46C1 /* ContainerViewController.swift */,
 			);
 			path = HomePageController;
 			sourceTree = "<group>";
@@ -194,6 +206,8 @@
 			children = (
 				922F9FF523AF2A54005AAA59 /* ContactModel.swift */,
 				9209426123B030B6002D2A20 /* ActivityModel.swift */,
+				92295D0424C4F49C005F46C1 /* ImageModel.swift */,
+				9292C76624DCF2DF00EE9EF9 /* ContactFormModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -202,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				92576632241B145E00E76567 /* view_snapshot.swift */,
+				9292C76824DCF64100EE9EF9 /* Protocols.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -338,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9209426223B030B6002D2A20 /* ActivityModel.swift in Sources */,
+				9292C76924DCF64100EE9EF9 /* Protocols.swift in Sources */,
 				922F9FE923AED1C1005AAA59 /* CameraServices.swift in Sources */,
 				922F9FEF23AF03EE005AAA59 /* Errors.swift in Sources */,
 				922F9FB023AE8255005AAA59 /* AppDelegate.swift in Sources */,
@@ -346,10 +362,14 @@
 				92576633241B145E00E76567 /* view_snapshot.swift in Sources */,
 				9209425E23B0028A002D2A20 /* U_Owe_Me.xcdatamodeld in Sources */,
 				920C455924918B0900F3FE3F /* ContactTableViewController.swift in Sources */,
+				92295D0924C530B8005F46C1 /* ContactNavController.swift in Sources */,
+				9292C76724DCF2DF00EE9EF9 /* ContactFormModel.swift in Sources */,
+				92295D0B24C5393D005F46C1 /* ContainerViewController.swift in Sources */,
 				922F9FE423AE8A48005AAA59 /* DefaultPageViewController.swift in Sources */,
 				922F9FF823AF78CC005AAA59 /* HomeContactViewController.swift in Sources */,
 				922F9FE723AED0CF005AAA59 /* CameraViewController.swift in Sources */,
-				920FE53724BBC66300D152BE /* ContactTableContainerController.swift in Sources */,
+				92295D0324C4F32B005F46C1 /* ContactFormViewController.swift in Sources */,
+				92295D0524C4F49C005F46C1 /* ImageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

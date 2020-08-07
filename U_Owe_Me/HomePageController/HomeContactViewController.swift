@@ -77,6 +77,8 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
     var resultSearchController = UISearchController()
     var selectedIndex : IndexPath?
     public var currentImage : UIImage?
+    
+    // MARK: Collected Data
     var backingImage : UIImage?
     
     // MARK: animation instance vars
@@ -192,6 +194,24 @@ class HomeContactViewController: UIViewController, UITableViewDelegate, UITableV
                    didSelectRowAt indexPath: IndexPath){
         self.selectedIndex = indexPath
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ContactNavController,
+            segue.identifier == "EmbedContactSegue" {
+            if let rootVC = vc.viewControllers.first as? ContainerViewController{
+                rootVC.delegate = self
+            }
+        }
+    }
+}
+
+extension HomeContactViewController : FormDataProtocol{
+    func setFormData() -> ContactFormModel? {
+        let imgModel = ImageModel()
+        imgModel.image = backingImage
+        return ContactFormModel(imgModel, nil)
+    }
+    
     
 }
 

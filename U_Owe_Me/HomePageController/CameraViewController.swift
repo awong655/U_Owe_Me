@@ -222,5 +222,4 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         present(cardContacts, animated: false)
         
     }
-
 }
