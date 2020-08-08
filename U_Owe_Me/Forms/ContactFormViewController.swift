@@ -18,5 +18,16 @@ class ContactFormViewController: UIViewController {
         super.viewDidLoad()
         contactFormModel = delegate?.setFormData()
     }
+    
+    @IBOutlet var form: Form!
+    
+    @IBAction func save() {
+        print("Form Data:",
+              form["firstName"],
+              form["lastName"],
+              form["age"])
+        
+    }
+    
 }
 

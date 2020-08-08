@@ -28,6 +28,8 @@
 		922F9FF623AF2A54005AAA59 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FF523AF2A54005AAA59 /* ContactModel.swift */; };
 		922F9FF823AF78CC005AAA59 /* HomeContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922F9FF723AF78CC005AAA59 /* HomeContactViewController.swift */; };
 		92576633241B145E00E76567 /* view_snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92576632241B145E00E76567 /* view_snapshot.swift */; };
+		92580BF224DF46AF00DCEBE3 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92580BF124DF46AF00DCEBE3 /* Form.swift */; };
+		92580BF424DF47F800DCEBE3 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92580BF324DF47F800DCEBE3 /* TextFieldExtension.swift */; };
 		9292C76724DCF2DF00EE9EF9 /* ContactFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9292C76624DCF2DF00EE9EF9 /* ContactFormModel.swift */; };
 		9292C76924DCF64100EE9EF9 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9292C76824DCF64100EE9EF9 /* Protocols.swift */; };
 /* End PBXBuildFile section */
@@ -77,6 +79,8 @@
 		922F9FF523AF2A54005AAA59 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
 		922F9FF723AF78CC005AAA59 /* HomeContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContactViewController.swift; sourceTree = "<group>"; };
 		92576632241B145E00E76567 /* view_snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = view_snapshot.swift; sourceTree = "<group>"; };
+		92580BF124DF46AF00DCEBE3 /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
+		92580BF324DF47F800DCEBE3 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
 		9292C76624DCF2DF00EE9EF9 /* ContactFormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormModel.swift; sourceTree = "<group>"; };
 		9292C76824DCF64100EE9EF9 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,6 +141,7 @@
 		922F9FAE23AE8255005AAA59 /* U_Owe_Me */ = {
 			isa = PBXGroup;
 			children = (
+				92580BF024DF468400DCEBE3 /* Forms */,
 				920C45552491895500F3FE3F /* ContactTableController */,
 				92576631241B143900E76567 /* Helpers */,
 				922F9FF423AF1EE2005AAA59 /* Models */,
@@ -179,7 +184,6 @@
 				922F9FE623AED0CF005AAA59 /* CameraViewController.swift */,
 				922F9FE823AED1C1005AAA59 /* CameraServices.swift */,
 				922F9FF723AF78CC005AAA59 /* HomeContactViewController.swift */,
-				92295D0224C4F32B005F46C1 /* ContactFormViewController.swift */,
 				92295D0824C530B8005F46C1 /* ContactNavController.swift */,
 				92295D0A24C5393D005F46C1 /* ContainerViewController.swift */,
 			);
@@ -219,6 +223,16 @@
 				9292C76824DCF64100EE9EF9 /* Protocols.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		92580BF024DF468400DCEBE3 /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				92295D0224C4F32B005F46C1 /* ContactFormViewController.swift */,
+				92580BF124DF46AF00DCEBE3 /* Form.swift */,
+				92580BF324DF47F800DCEBE3 /* TextFieldExtension.swift */,
+			);
+			path = Forms;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,6 +370,7 @@
 				9292C76924DCF64100EE9EF9 /* Protocols.swift in Sources */,
 				922F9FE923AED1C1005AAA59 /* CameraServices.swift in Sources */,
 				922F9FEF23AF03EE005AAA59 /* Errors.swift in Sources */,
+				92580BF224DF46AF00DCEBE3 /* Form.swift in Sources */,
 				922F9FB023AE8255005AAA59 /* AppDelegate.swift in Sources */,
 				922F9FF623AF2A54005AAA59 /* ContactModel.swift in Sources */,
 				9209426023B02D12002D2A20 /* ActivityViewController.swift in Sources */,
@@ -364,6 +379,7 @@
 				920C455924918B0900F3FE3F /* ContactTableViewController.swift in Sources */,
 				92295D0924C530B8005F46C1 /* ContactNavController.swift in Sources */,
 				9292C76724DCF2DF00EE9EF9 /* ContactFormModel.swift in Sources */,
+				92580BF424DF47F800DCEBE3 /* TextFieldExtension.swift in Sources */,
 				92295D0B24C5393D005F46C1 /* ContainerViewController.swift in Sources */,
 				922F9FE423AE8A48005AAA59 /* DefaultPageViewController.swift in Sources */,
 				922F9FF823AF78CC005AAA59 /* HomeContactViewController.swift in Sources */,

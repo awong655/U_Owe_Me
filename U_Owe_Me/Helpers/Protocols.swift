@@ -11,3 +11,9 @@ import Foundation
 protocol FormDataProtocol : class{
     func setFormData() -> ContactFormModel?
 }
+
+@objc protocol FormControl: class{
+    var key: String? { get }
+    var text: String? { get }
+    func clear()
+}
